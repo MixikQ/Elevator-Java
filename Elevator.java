@@ -46,12 +46,12 @@ public class Elevator implements Runnable {
                 if (!destinations.isEmpty()) {
                     int nextFloor = destinations.peek();
                     directionUp = nextFloor > currentFloor;
-                    logger.info(String.format("Elevator-%d: Moving from %d to %d", id, currentFloor, nextFloor));
+                    logger.info(String.format("Moving from %d to %d", id, currentFloor, nextFloor));
                     state = ElevatorState.MOVING;
                     while (currentFloor != nextFloor) {
                         if (directionUp) currentFloor++;
                         else currentFloor--;
-                        logger.info(String.format("Elevator-%d: Floor %d", id, currentFloor));
+                        logger.info(String.format("Floor %d", id, currentFloor));
                         Thread.sleep(2000);
                     }
 
@@ -72,9 +72,9 @@ public class Elevator implements Runnable {
 
     private void arriveAtFloor(int floor) throws InterruptedException {
         state = ElevatorState.DOORS_OPEN;
-        logger.info(String.format("Elevator-%d: Arrived at floor %d, opens the doors", id, floor));
+        logger.info(String.format("Arrived at floor %d, opens the doors", id, floor));
         Thread.sleep(1000);
-        logger.info(String.format("Elevator-%d: Closes the doors", id));
+        logger.info(String.format("Closes the doors", id));
         Thread.sleep(500);
     }
 }
